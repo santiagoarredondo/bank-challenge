@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 public class Dispatcher {
 
+    private static final Dispatcher instance = new Dispatcher();
+
     private ArrayList<Employee> lstEmployees = new ArrayList<Employee>();
-    private int id;
+
+    public static Dispatcher getInstance(){
+        return Dispatcher.instance;
+    }
 
     public Employee attend() {
         Employee employee = firstAvailable();
