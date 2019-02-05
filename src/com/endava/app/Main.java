@@ -7,7 +7,7 @@ import com.endava.bank.Role;
 public class Main {
 
     public static void main(String[] args) {
-        Dispatcher dispatcher = Dispatcher.getInstance();
+        /*Dispatcher dispatcher = Dispatcher.getInstance();
         Role director = new Role("Director", 3);
         Role supervisor = new Role("Supervisor", 2);
         Role cashier = new Role("Cashier", 1);
@@ -18,6 +18,7 @@ public class Main {
         dispatcher.addEmployee(e2);
         dispatcher.addEmployee(e3);
         System.out.println(dispatcher.attend().toString());
+        */
     }
 
 }

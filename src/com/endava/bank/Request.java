@@ -1,23 +1,23 @@
 package com.endava.bank;
 
 public class Request {
-    private int id;
+    private String id;
     private String type;
     private double amount;
     Customer customer;
 
-    public Request(int id, String type, double amount, Customer customer) {
+    public Request(String id, String type, double amount, Customer customer) {
         this.id = id;
         this.type = type;
         this.amount = amount;
         this.customer = customer;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

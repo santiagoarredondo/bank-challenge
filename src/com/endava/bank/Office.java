@@ -1,6 +1,8 @@
 package com.endava.bank;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Office {
     private int id;
@@ -9,7 +11,6 @@ public class Office {
     private String address;
     private String currency;
     private Dispatcher dispatcher;
-    private ArrayList<Request> lstRequests = new ArrayList<Request>();
 
     public Office(int id, String country, String city, String address, String currency) {
         this.id = id;
@@ -60,6 +61,14 @@ public class Office {
         this.currency = currency;
     }
 
+    public Dispatcher getDispatcher() {
+        return dispatcher;
+    }
+
+    public void setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+    }
+
     @Override
     public String toString() {
         return "Office{" +
@@ -71,7 +80,9 @@ public class Office {
                 '}';
     }
 
-    public Transaction addRequest(Request r){
-        return new Transaction()
+    public void addRequest(String id, Customer customer, double amount, String type){
+        Request request = new Request(id, type, amount, customer);
+        this.dispatcher.getLstRequests().add(request);
+        this.dispatcher.attend();
     }
 }
