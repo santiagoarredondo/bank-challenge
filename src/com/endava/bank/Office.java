@@ -1,5 +1,7 @@
 package com.endava.bank;
 
+import java.util.ArrayList;
+
 public class Office {
     private int id;
     private String country;
@@ -7,6 +9,7 @@ public class Office {
     private String address;
     private String currency;
     private Dispatcher dispatcher;
+    private ArrayList<Request> lstRequests = new ArrayList<Request>();
 
     public Office(int id, String country, String city, String address, String currency) {
         this.id = id;
@@ -66,5 +69,9 @@ public class Office {
                 ", address='" + address + '\'' +
                 ", currency='" + currency + '\'' +
                 '}';
+    }
+
+    public Transaction addRequest(Request r){
+        return new Transaction()
     }
 }
