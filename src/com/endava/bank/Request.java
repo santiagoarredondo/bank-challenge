@@ -1,21 +1,23 @@
 package com.endava.bank;
 
 public class Request {
-    private int id;
+    private String id;
     private String type;
     private double amount;
+    Customer customer;
 
-    public Request(int id, String type, double amount) {
+    public Request(String id, String type, double amount, Customer customer) {
         this.id = id;
         this.type = type;
         this.amount = amount;
+        this.customer = customer;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,12 +37,11 @@ public class Request {
         this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Request{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", amount=" + amount +
-                '}';
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

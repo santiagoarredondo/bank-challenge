@@ -8,14 +8,7 @@ public class Customer {
     private String email;
     private String id;
     private String name;
-    private ArrayList<Request> lstRequests = new ArrayList<Request>();
-
-    public Customer(String id, String name, String email, ArrayList<Request> lstRequests) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.lstRequests = lstRequests;
-    }
+    private String accountID;
 
     public String getEmail() {
         return email;
@@ -25,21 +18,34 @@ public class Customer {
         this.email = email;
     }
 
-    public ArrayList<Request> getLstRequests() {
-        return lstRequests;
+    public String getId() {
+        return id;
     }
 
-    public void setLstRequests(ArrayList<Request> lstRequests) {
-        this.lstRequests = lstRequests;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Customer{" +
-                "email='" + email + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", lstRequests=" + lstRequests +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAccountID() {
+        return accountID;
+    }
+
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
+    }
+
+    public Customer(String email, String id, String name, String accountID) {
+        this.email = email;
+        this.id = id;
+        this.name = name;
+        this.accountID = accountID;
     }
 }
