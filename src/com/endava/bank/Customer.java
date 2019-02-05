@@ -3,13 +3,16 @@ package com.endava.bank;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Customer extends Person{
+public class Customer {
 
     private String email;
+    private String id;
+    private String name;
     private ArrayList<Request> lstRequests = new ArrayList<Request>();
 
-    public Customer(int id, String name, String email, ArrayList<Request> lstRequests) {
-        super(id, name);
+    public Customer(String id, String name, String email, ArrayList<Request> lstRequests) {
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.lstRequests = lstRequests;
     }
@@ -30,11 +33,12 @@ public class Customer extends Person{
         this.lstRequests = lstRequests;
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Customer{" +
-                super.toString()+" "+
                 "email='" + email + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
                 ", lstRequests=" + lstRequests +
                 '}';
     }

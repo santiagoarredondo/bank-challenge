@@ -1,12 +1,15 @@
 package com.endava.bank;
 
-public class Employee extends Person {
+public class Employee{
+    private String name;
+    private String id;
     private double salary;
     private boolean available;
     private Role role;
 
-    public Employee(int id, String name, double salary, boolean available, Role role) {
-        super(id, name);
+    public Employee(String id, String name, double salary, boolean available, Role role) {
+        this.name=name;
+        this.id=id;
         this.salary = salary;
         this.available = available;
         this.role = role;
