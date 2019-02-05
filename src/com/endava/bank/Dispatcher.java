@@ -18,6 +18,7 @@ public class Dispatcher {
             System.err.println("There's no one available");
             return null;
         }
+        employee.setAvailable(false);
         return employee;
     }
 
@@ -44,4 +45,5 @@ public class Dispatcher {
     public void removeEmployee(Employee e){
         lstEmployees.remove(e);
     }
+
 }
