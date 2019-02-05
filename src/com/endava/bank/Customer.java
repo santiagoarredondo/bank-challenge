@@ -1,16 +1,17 @@
 package com.endava.bank;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Customer extends Person{
 
     private String email;
-    private  Account account;
-    private Dispatcher dispatcher;
+    private ArrayList<Request> lstRequests = new ArrayList<Request>();
 
-    public Customer(int id, String name, String email, Account account, Dispatcher dispatcher) {
+    public Customer(int id, String name, String email, ArrayList<Request> lstRequests) {
         super(id, name);
         this.email = email;
-        this.account = account;
-        this.dispatcher = dispatcher;
+        this.lstRequests = lstRequests;
     }
 
     public String getEmail() {
@@ -21,39 +22,20 @@ public class Customer extends Person{
         this.email = email;
     }
 
-    public Account getAccount() {
-        return account;
+    public ArrayList<Request> getLstRequests() {
+        return lstRequests;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Dispatcher getDispatcher() {
-        return dispatcher;
-    }
-
-    public void setDispatcher(Dispatcher dispatcher) {
-        this.dispatcher = dispatcher;
+    public void setLstRequests(ArrayList<Request> lstRequests) {
+        this.lstRequests = lstRequests;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
+                super.toString()+" "+
                 "email='" + email + '\'' +
-                ", account=" + account +
+                ", lstRequests=" + lstRequests +
                 '}';
-    }
-
-    public void chargeAccount(double value){
-        this.account.charge(value);
-    }
-
-    public void discountAccount(double value){
-        this.account.discount(value);
-    }
-
-    public void transferAccount(double value){
-        this.account.transfer(value);
     }
 }
