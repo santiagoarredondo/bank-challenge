@@ -14,27 +14,28 @@ public class Transaction {
         this.employee = employee;
         this.date = date;
         observers = new ArrayList<TransactionObserver>();
-        observers.add(Auditor.getInstance());
-        observers.add(MessageManager.getInstance());
-        notifyObservers();
     }
 
     public boolean operate(){
         System.out.println(this.request.toString());
+        boolean state = false;
         if(request.getType().equalsIgnoreCase("deposit")){
             Deposit deposit = new Deposit();
-            return  deposit.Operate(this);
+            state = deposit.Operate(this);
         }
         else if(request.getType().equalsIgnoreCase("withdraw")){
             WithDraw withDraw= new WithDraw();
-            return  withDraw.Operate(this);
+            state = withDraw.Operate(this);
         }
         else if(request.getType().equalsIgnoreCase("resolveissue")){
             ResolveIssue resolveIssue = new ResolveIssue();
-            return  resolveIssue.Operate(this);
+            state = resolveIssue.Operate(this);
         }
-        else
-            return  false;
+        else{
+            state = false;
+        }
+        registerObservers();
+        return state;
     }
 
     public Request getRequest() {
@@ -77,6 +78,12 @@ public class Transaction {
                 ", date=" + date +
                 ", observers=" + observers +
                 '}';
+    }
+
+    private void registerObservers(){
+        observers.add(Auditor.getInstance());
+        observers.add(MessageManager.getInstance());
+        notifyObservers();
     }
 
     private void notifyObservers(){
