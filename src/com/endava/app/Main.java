@@ -50,13 +50,13 @@ public class Main {
         office.getDispatcher().addEmployee(e1);
         office.getDispatcher().addEmployee(e2);
         office.getDispatcher().addEmployee(e3);
-        //office.addRequest("16546",new Customer("sar@gmail.com","83","JUAN"), 150000,"deposit");
+        office.addRequest("16546",new Customer("sar@gmail.com","83","JUAN","12345"), 150000,"deposit");
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println("hola");
+
     }
 
 }
