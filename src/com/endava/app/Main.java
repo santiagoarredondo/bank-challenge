@@ -9,38 +9,6 @@ import static java.lang.Thread.sleep;
 
 public class Main {
 
-    private static  void  sayHello(){
-        System.out.println("Wellcome to the app");
-    }
-
-    private static void showMenuOptions(){
-        System.out.println("Please choose an option:\n" +
-                "1. Create Customer\n" +
-                "2. Create show employees\n" +
-                "3. Make a request\n" +
-                "4. Exit");
-    }
-
-    private static void insertOption(){
-        try {
-            Scanner input = new Scanner(System.in);
-            int option = input.nextInt();
-            switch (option) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    break;
-            }
-            input.close();
-        }catch (Exception e){
-            System.err.println("You have to insert a number");
-        }
-    }
-
     public static void main(String[] args) throws InterruptedException {
         Office office = new Office("1234","Colombia", "Bogota","CR7 19 2", "COP");
         Role director = new Role("Director", 3);

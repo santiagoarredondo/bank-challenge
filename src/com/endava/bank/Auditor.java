@@ -75,9 +75,6 @@ public class Auditor implements TransactionObserver {
                bw.write(newTransaction);
                bw.flush();
                bw.close();
-
-
-
            }catch(IOException e){
                e.printStackTrace();
            }

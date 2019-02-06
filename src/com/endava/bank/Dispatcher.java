@@ -83,11 +83,4 @@ public class Dispatcher {
         lstEmployees.remove(e);
     }
 
-    public void showRequestList(){
-        System.out.printf("%8s\t%10s\t%10s\t%15s","ID","AMOUNT","TYPE","CUSTOMER");
-        for (Request r:lstRequests) {
-            System.out.printf("%8s\t%8.2f\t%10s\t%15s", r.getId(),r.getAmount(),r.getType(),r.getCustomer().getName());
-        }
-    }
-
 }
