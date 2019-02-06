@@ -25,12 +25,13 @@ public class Auditor implements TransactionObserver {
 
         File tempFile = new File(fileName);
         boolean exists = tempFile.exists();
+        String newTransaction=transactionDescription + "\n";
 
        if (exists){
 
 
            try{
-               Files.write(Paths.get(fileName), transactionDescription.getBytes(), StandardOpenOption.APPEND);
+               Files.write(Paths.get(fileName), newTransaction.getBytes(), StandardOpenOption.APPEND);
 
            }
            catch(IOException e){
@@ -46,7 +47,7 @@ public class Auditor implements TransactionObserver {
                file.createNewFile();
                FileWriter fw = new FileWriter(file);
                BufferedWriter bw = new BufferedWriter(fw);
-               bw.write(transactionDescription);
+               bw.write(newTransaction);
                bw.flush();
                bw.close();
 
