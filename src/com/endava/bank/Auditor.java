@@ -8,6 +8,18 @@ import java.util.Date;
 
 public class Auditor implements TransactionObserver {
 
+    private static Auditor uniqueInstance;
+
+    public Auditor() {
+    }
+
+    public static synchronized Auditor getInstance(){
+        if (uniqueInstance == null){
+            uniqueInstance = new Auditor();
+        }
+        return uniqueInstance;
+    }
+
     @Override
    public void update(Transaction currentTransaction){
         if (currentTransaction.getRequest().getType().equalsIgnoreCase("DEPOSIT")&&(currentTransaction.getRequest().getAmount() >10000)) {

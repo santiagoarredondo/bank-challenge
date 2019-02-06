@@ -14,9 +14,8 @@ public class Transaction {
         this.employee = employee;
         this.date = date;
         observers = new ArrayList<TransactionObserver>();
-        observers.add(new Auditor());
-        observers.add(new MessageManager());
-
+        observers.add(Auditor.getInstance());
+        observers.add(MessageManager.getInstance());
         notifyObservers();
     }
 

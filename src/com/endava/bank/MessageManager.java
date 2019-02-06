@@ -2,6 +2,16 @@ package com.endava.bank;
 
 
 public class MessageManager implements TransactionObserver {
+    private static MessageManager uniqueInstance;
+
+    public MessageManager() {}
+
+    public static synchronized MessageManager getInstance(){
+        if (uniqueInstance == null ){
+            uniqueInstance = new MessageManager();
+        }
+        return uniqueInstance;
+    }
 
     @Override
     public void  update(Transaction currentTransaction){
