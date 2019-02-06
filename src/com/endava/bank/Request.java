@@ -44,4 +44,14 @@ public class Request {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id='" + id + '\'' +
+                ", type='" + type + '\'' +
+                ", amount=" + amount +
+                ", customer=" + this.customer.toString()+
+                '}';
+    }
 }

@@ -17,15 +17,16 @@ public class Transaction {
     }
 
     public boolean operate(){
-        if(request.getType().equals("deposit")){
+        System.out.println(this.request.toString());
+        if(request.getType().equalsIgnoreCase("deposit")){
             Deposit deposit = new Deposit();
             return  deposit.Operate();
         }
-        else if(request.getType().equals("withdraw")){
+        else if(request.getType().equalsIgnoreCase("withdraw")){
             WithDraw withDraw= new WithDraw();
             return  withDraw.Operate();
         }
-        else if(request.getType().equals("resolveissue")){
+        else if(request.getType().equalsIgnoreCase("resolveissue")){
             ResolveIssue resolveIssue = new ResolveIssue();
             return  resolveIssue.Operate();
         }
@@ -74,4 +75,6 @@ public class Transaction {
                 ", observers=" + observers +
                 '}';
     }
+
+
 }

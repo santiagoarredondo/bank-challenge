@@ -45,20 +45,18 @@ public class Dispatcher {
         return selection;
     }
 
+    /*
     public ArrayList<Employee> getLstEmployees() {
         return lstEmployees;
     }
+    */
 
     public Queue<Request> getLstRequests() {
         return lstRequests;
     }
 
-    public void setLstRequests(Queue<Request> lstRequests) {
-        this.lstRequests = lstRequests;
-    }
-
-    public void setLstEmployees(ArrayList<Employee> lstEmployees) {
-        this.lstEmployees = lstEmployees;
+    public  void  addRequest(Request request){
+        lstRequests.add(request);
     }
 
     public void addEmployee(Employee e){
@@ -67,6 +65,13 @@ public class Dispatcher {
 
     public void removeEmployee(Employee e){
         lstEmployees.remove(e);
+    }
+
+    public void showRequestList(){
+        System.out.printf("%8s\t%10s\t%10s\t%15s","ID","AMOUNT","TYPE","CUSTOMER");
+        for (Request r:lstRequests) {
+            System.out.printf("%8s\t%8.2f\t%10s\t%15s", r.getId(),r.getAmount(),r.getType(),r.getCustomer().getName());
+        }
     }
 
 }

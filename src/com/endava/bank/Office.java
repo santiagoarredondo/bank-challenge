@@ -1,18 +1,14 @@
 package com.endava.bank;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class Office {
-    private int id;
+    private String id;
     private String country;
     private String city;
     private String address;
     private String currency;
     private Dispatcher dispatcher;
 
-    public Office(int id, String country, String city, String address, String currency) {
+    public Office(String id, String country, String city, String address, String currency) {
         this.id = id;
         this.country = country;
         this.city = city;
@@ -21,11 +17,11 @@ public class Office {
         this.dispatcher = Dispatcher.getInstance();
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -82,7 +78,7 @@ public class Office {
 
     public void addRequest(String id, Customer customer, double amount, String type){
         Request request = new Request(id, type, amount, customer);
-        this.dispatcher.getLstRequests().add(request);
+        this.dispatcher.addRequest(request);
         this.dispatcher.attend();
     }
 }
