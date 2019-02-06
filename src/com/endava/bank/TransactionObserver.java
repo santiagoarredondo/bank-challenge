@@ -1,5 +1,5 @@
 package com.endava.bank;
 
 public interface TransactionObserver {
-    void  update();
+    void  update(Transaction currentTransaction);
 }

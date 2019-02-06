@@ -15,7 +15,7 @@ public class Main {
         office.getDispatcher().addEmployee(e1);
         office.getDispatcher().addEmployee(e2);
         office.getDispatcher().addEmployee(e3);
-        office.addRequest("16546",new Customer("sar@gmail.com","83","JUAN"), 150000,"deposit");
+        office.addRequest("16546",new Customer("sar@gmail.com","83","JUAN","TD-681684468415"), 150000,"deposit");
         office.getDispatcher().showRequestList();
     }
 

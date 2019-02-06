@@ -20,15 +20,15 @@ public class Transaction {
         System.out.println(this.request.toString());
         if(request.getType().equalsIgnoreCase("deposit")){
             Deposit deposit = new Deposit();
-            return  deposit.Operate();
+            return  deposit.Operate(this);
         }
         else if(request.getType().equalsIgnoreCase("withdraw")){
             WithDraw withDraw= new WithDraw();
-            return  withDraw.Operate();
+            return  withDraw.Operate(this);
         }
         else if(request.getType().equalsIgnoreCase("resolveissue")){
             ResolveIssue resolveIssue = new ResolveIssue();
-            return  resolveIssue.Operate();
+            return  resolveIssue.Operate(this);
         }
         else
             return  false;

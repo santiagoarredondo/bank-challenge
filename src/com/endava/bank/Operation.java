@@ -1,5 +1,5 @@
 package com.endava.bank;
 
 public interface Operation {
-    boolean Operate();
+    boolean Operate(Transaction currentTransaction);
 }
