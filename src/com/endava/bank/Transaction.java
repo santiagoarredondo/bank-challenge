@@ -13,7 +13,11 @@ public class Transaction {
         this.request = request;
         this.employee = employee;
         this.date = date;
-        //TODO: Observer insert observer services
+        observers = new ArrayList<TransactionObserver>();
+        observers.add(new Auditor());
+        observers.add(new MessageManager());
+
+        notifyObservers();
     }
 
     public boolean operate(){
@@ -74,6 +78,12 @@ public class Transaction {
                 ", date=" + date +
                 ", observers=" + observers +
                 '}';
+    }
+
+    private void notifyObservers(){
+        for(TransactionObserver concreteObserver: observers){
+            concreteObserver.update(this);
+        }
     }
 
 

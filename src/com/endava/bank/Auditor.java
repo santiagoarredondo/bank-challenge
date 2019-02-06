@@ -10,10 +10,7 @@ public class Auditor implements TransactionObserver {
 
     @Override
    public void update(Transaction currentTransaction){
-
-
-        if (currentTransaction.getRequest().getType().equals("DEPOSIT")&&(currentTransaction.getRequest().getAmount() >10000)) {
-
+        if (currentTransaction.getRequest().getType().equalsIgnoreCase("DEPOSIT")&&(currentTransaction.getRequest().getAmount() >10000)) {
             String transactionDescription=currentTransaction.getRequest().getCustomer().getId()+","+currentTransaction.getRequest().getCustomer().getAccountId()+","+currentTransaction.getRequest().getAmount();
             String fileName=getFileName( currentTransaction.getDate());
             writeTransactionDescription(transactionDescription,fileName);
@@ -64,7 +61,6 @@ public class Auditor implements TransactionObserver {
 
 
     public  String getFileName(Date transactionDate){
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
         String fileName = "DEPOSITSTOREVIEW-"+dateFormat.format(transactionDate)+".txt";
         return fileName;
