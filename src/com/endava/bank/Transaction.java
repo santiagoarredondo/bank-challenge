@@ -17,7 +17,6 @@ public class Transaction {
     }
 
     public boolean operate(){
-        System.out.println(this.request.toString());
         boolean state = false;
         if(request.getType().equalsIgnoreCase("deposit")){
             Deposit deposit = new Deposit();

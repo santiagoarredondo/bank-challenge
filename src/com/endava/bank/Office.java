@@ -79,6 +79,5 @@ public class Office {
     public void addRequest(String id, Customer customer, double amount, String type){
         Request request = new Request(id, type, amount, customer);
         this.dispatcher.addRequest(request);
-        this.dispatcher.attend();
     }
 }
