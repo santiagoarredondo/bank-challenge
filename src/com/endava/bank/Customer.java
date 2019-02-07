@@ -1,16 +1,20 @@
 package com.endava.bank;
 
-public class Customer extends Person{
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Customer {
 
     private String email;
-    private  Account account;
-    private Dispatcher dispatcher;
+    private String id;
+    private String name;
+    private String accountId;
 
-    public Customer(int id, String name, String email, Account account, Dispatcher dispatcher) {
-        super(id, name);
+    public Customer(String email, String id, String name, String accountId) {
         this.email = email;
-        this.account = account;
-        this.dispatcher = dispatcher;
+        this.id = id;
+        this.name = name;
+        this.accountId = accountId;
     }
 
     public String getEmail() {
@@ -21,39 +25,37 @@ public class Customer extends Person{
         this.email = email;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getId() {
+        return id;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Dispatcher getDispatcher() {
-        return dispatcher;
+    public String getName() {
+        return name;
     }
 
-    public void setDispatcher(Dispatcher dispatcher) {
-        this.dispatcher = dispatcher;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
                 "email='" + email + '\'' +
-                ", account=" + account +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", accountId='" + accountId + '\'' +
                 '}';
-    }
-
-    public void chargeAccount(double value){
-        this.account.charge(value);
-    }
-
-    public void discountAccount(double value){
-        this.account.discount(value);
-    }
-
-    public void transferAccount(double value){
-        this.account.transfer(value);
     }
 }

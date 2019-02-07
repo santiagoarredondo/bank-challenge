@@ -1,52 +1,48 @@
 package com.endava.bank;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Transaction {
-    private int id;
-    private String type;
-    private String description;
-    private double value;
+    private Request request;
     private Employee employee;
-    private Customer customer;
+    private Date date;
+    private ArrayList<TransactionObserver> observers;
 
-    public Transaction(int id, String type, String description, double value, Employee employee, Customer customer) {
-        this.id = id;
-        this.type = type;
-        this.description = description;
-        this.value = value;
+    public Transaction(Request request, Employee employee, Date date) {
+        this.request = request;
         this.employee = employee;
-        this.customer = customer;
+        this.date = date;
+        observers = new ArrayList<TransactionObserver>();
     }
 
-    public int getId() {
-        return id;
+    public boolean operate(){
+        boolean state = false;
+        if(request.getType().equalsIgnoreCase("deposit")){
+            Deposit deposit = new Deposit();
+            state = deposit.Operate(this);
+        }
+        else if(request.getType().equalsIgnoreCase("withdraw")){
+            WithDraw withDraw= new WithDraw();
+            state = withDraw.Operate(this);
+        }
+        else if(request.getType().equalsIgnoreCase("resolveissue")){
+            ResolveIssue resolveIssue = new ResolveIssue();
+            state = resolveIssue.Operate(this);
+        }
+        else{
+            state = false;
+        }
+        registerObservers();
+        return state;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Request getRequest() {
+        return request;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     public Employee getEmployee() {
@@ -57,23 +53,43 @@ public class Transaction {
         this.employee = employee;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public ArrayList<TransactionObserver> getObservers() {
+        return observers;
+    }
+
+    public void setObservers(ArrayList<TransactionObserver> observers) {
+        this.observers = observers;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                ", value=" + value +
+                "request=" + request +
                 ", employee=" + employee +
-                ", customer=" + customer +
+                ", date=" + date +
+                ", observers=" + observers +
                 '}';
     }
+
+    private void registerObservers(){
+        observers.add(Auditor.getInstance());
+        observers.add(MessageManager.getInstance());
+        notifyObservers();
+    }
+
+    private void notifyObservers(){
+        for(TransactionObserver concreteObserver: observers){
+            concreteObserver.update(this);
+        }
+    }
+
+
 }
